@@ -1,12 +1,16 @@
 class CommentsController < ApplicationController
-    before_action :set_comments, only: [:index, :show]
 
     def index
-      render json: @comments
+        render json: Comment.all
+    end
+
+    def show
+        comment = find_comment
+        render json: comment
     end
 
     private
-    def set_comments
-        @comments = Comment.all
+    def find_comment
+        Comment.find(params[:id])
     end
 end

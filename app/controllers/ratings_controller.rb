@@ -1,12 +1,16 @@
 class RatingsController < ApplicationController
-    before_action :set_ratings, only: [:index, :show]
     
     def index
-        render json: @ratings
+        render json: Rating.all
+    end
+
+    def show
+        rating = find_rating
+        render json: rating
     end
 
     private
-    def set_ratings
-        @ratings = Rating.all
+    def find_rating
+        Rating.find(params[:id])
     end
 end

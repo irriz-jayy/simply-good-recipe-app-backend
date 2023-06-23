@@ -1,12 +1,16 @@
 class RecipesController < ApplicationController
-    before_action :set_recipes, only: [:index, :show]
 
     def index
-        render json: @recipes, status: :ok
+        render json: Recipe.all
+    end
+
+    def show
+        recipe= find_recipe
+        render json: recipe
     end
 
     private
-    def set_recipes
-        @recipes = Recipe.all
+    def find_recipe
+        Recipe.find(params[:id])
     end
 end
