@@ -51,6 +51,6 @@ group :development do
 end
 
 
-gem "jwt", "~> 2.7"
+gem "jwt"
 
 gem "active_model_serializers", "~> 0.10.13"
