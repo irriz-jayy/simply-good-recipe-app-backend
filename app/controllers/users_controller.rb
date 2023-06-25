@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
 skip_before_action :authorized, only: [:create]
 
-# def profile
-#   render json: user
-# end
 def profile
-  @user = User.find(params[:id])
-  render json: { user: @user }, status: :ok
-rescue ActiveRecord::RecordNotFound
-  render json: { error: 'User not found' }, status: :not_found
+  render json: @user
 end
+# def profile
+#   @user = User.find(params[:id])
+#   render json: { user: @user }, status: :ok
+# rescue ActiveRecord::RecordNotFound
+#   render json: { error: 'User not found' }, status: :not_found
+# end
 
 
 def create

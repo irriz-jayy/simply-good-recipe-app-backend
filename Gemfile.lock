@@ -180,7 +180,7 @@ DEPENDENCIES
   bootsnap
   debug
   faker
-  jwt (~> 2.7)
+  jwt
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.5)
