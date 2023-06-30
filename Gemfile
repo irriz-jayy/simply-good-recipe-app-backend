@@ -35,6 +35,7 @@ gem "bootsnap", require: false
 
 # Use to generate dummy data
 gem 'faker'
+gem "rack-cors"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem "rack-cors"
@@ -49,3 +50,7 @@ group :development do
   # gem "spring"
 end
 
+
+gem "jwt"
+
+gem "active_model_serializers", "~> 0.10.13"
