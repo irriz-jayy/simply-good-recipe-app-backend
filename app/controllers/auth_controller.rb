@@ -3,13 +3,16 @@ class AuthController < ApplicationController
 
     def create
         @user = User.find_by(username: login_params[:username])
+        
         if @user && @user.authenticate(login_params[:password])
-            token = encode_token(user_id: @user.id)
-            render json: { user: UserSerializer.new(@user), jwt: token }, status: :accepted
+          token = encode_token(user_id: @user.id)
+          render json: { user: UserSerializer.new(@user), jwt: token }, status: :accepted
         else
-            render json: { error: 'Invalid username or password' }, status: :unauthorized
+          error_message = @user ? 'Invalid password' : 'User not found'
+          render json: { error: error_message }, status: :unauthorized
         end
-    end 
+      end
+      
 
     private
 
