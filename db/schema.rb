@@ -47,7 +47,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_185334) do
     t.text "description"
     t.text "ingredients"
     t.text "directions"
-    t.text "image_url"
+    t.string "image_url"
+    t.string "time"
     t.integer "number_of_people_served"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
