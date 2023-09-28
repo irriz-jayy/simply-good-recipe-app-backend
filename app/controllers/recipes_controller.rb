@@ -11,8 +11,14 @@ class RecipesController < ApplicationController
     end
 
     def create
-        recipe= Recipe.create(recipe_params)
-        if recipe.valid?
+        recipe= Recipe.new(recipe_params)
+
+        if params[:recipe][:image_url].present?
+            cloudinary_url = params[:recipe][:image_url]
+            recipe.image_url = cloudinary_url
+        end
+
+        if recipe.save
             render json: recipe, status: :created
         else
             render json:{errors:recipe.errors.full_messages}, status: :unprocessable_entity
