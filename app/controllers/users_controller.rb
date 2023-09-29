@@ -10,6 +10,22 @@ def profile
   render json: @user
 end
 
+def show
+  @user = User.find_by(params[:id])
+  render json: @user
+end
+
+def recipes
+  @user = User.find_by(id: params[:id])
+
+  if @user
+    @recipes = @user.recipes
+    render json: @recipes
+  else
+    render json: { error: 'User and recipes not found' }, status: :not_found
+  end
+end
+
 
 def create
   user = User.new(user_params)
