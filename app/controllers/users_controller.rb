@@ -30,7 +30,7 @@ def bookmarks
   @user = User.find_by(id:params[:id])
 
   if @user
-  @bookmarks = @user.bookmarks
+  @bookmarks = @user.bookmarks.includes(:recipe).map(&:recipe)
   render json: @bookmarks
   else
     render json:{error:"User and saved recipes not found"}
