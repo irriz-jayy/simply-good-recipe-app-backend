@@ -26,6 +26,17 @@ def recipes
   end
 end
 
+def bookmarks
+  @user = User.find_by(id:params[:id])
+
+  if @user
+  @bookmarks = @user.bookmarks
+  render json: @bookmarks
+  else
+    render json:{error:"User and saved recipes not found"}
+  end
+end
+
 
 def create
   user = User.new(user_params)
