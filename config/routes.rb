@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :users
   post '/login', to: 'auth#create'
   get '/profile', to: 'users#profile'
+  get '/users/:id/recipes', to: 'users#recipes'
+  get '/users/:id/bookmarks', to: 'users#bookmarks'
   resources :recipes
   resources :ratings
   resources :comments
