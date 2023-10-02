@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#profile'
   get '/users/:id/recipes', to: 'users#recipes'
   get '/users/:id/bookmarks', to: 'users#bookmarks'
+post '/users/:id/bookmarks', to: 'bookmarks#create'
   resources :recipes
   resources :ratings
   resources :comments
