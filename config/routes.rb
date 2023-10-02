@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/users/:id/recipes', to: 'users#recipes'
   get '/users/:id/bookmarks', to: 'users#bookmarks'
 post '/users/:id/bookmarks', to: 'bookmarks#create'
+delete '/users/:user_id/bookmarks/:id', to: 'bookmarks#destroy'
   resources :recipes
   resources :ratings
   resources :comments

@@ -29,6 +29,24 @@ class BookmarksController < ApplicationController
         end
       end
 
+      # DELETE /users/:user_id/bookmarks/:id
+  def destroy
+    # Find the user by user_id
+    user = User.find(params[:user_id])
+
+    # Find the bookmark to delete by bookmark_id (params[:id])
+    bookmark = Bookmark.find_by(id: params[:id], user_id: user.id)
+
+    if bookmark.nil?
+      render json: { error: 'Bookmark not found' }, status: :not_found
+    else
+      # Delete the bookmark
+      bookmark.destroy
+      render json: { message: 'Bookmark deleted successfully' }, status: :no_content
+    end
+  end
+
+
 
     private
     def find_bookmark
