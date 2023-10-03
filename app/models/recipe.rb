@@ -1,7 +1,7 @@
 class Recipe < ApplicationRecord
   belongs_to :user
-  has_many :bookmarks
-  has_many :ratings
+  has_many :bookmarks, dependent: :destroy
+  has_many :ratings, dependent: :destroy
 
   validates :user_id, presence: true
   validates :name, presence: true
