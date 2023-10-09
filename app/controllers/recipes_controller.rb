@@ -25,6 +25,16 @@ class RecipesController < ApplicationController
         end
     end
 
+    def update
+        recipe = find_recipe
+    
+        if recipe.update(recipe_params)
+          render json: recipe, status: :ok
+        else
+          render json: { errors: recipe.errors.full_messages }, status: :unprocessable_entity
+        end
+    end
+
     def destroy
         # Find the recipe by id
         recipe = Recipe.find(params[:id])
@@ -43,6 +53,6 @@ class RecipesController < ApplicationController
     end
 
     def recipe_params
-        params.require(:recipe).permit(:id, :user_id, :name, :country_of_origin, :description, :ingredients, :directions, :number_of_people_served)
+        params.require(:recipe).permit(:id, :user_id, :name, :country_of_origin, :description, :ingredients, :directions, :number_of_people_served, :time)
     end
 end
